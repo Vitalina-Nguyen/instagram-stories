@@ -39,6 +39,11 @@ export default function Page() {
     console.log("Watched stories: ", stories);
   }, [stories]);
 
+  useEffect(() => {
+    console.log("Active story: ", activeStory);
+  }, [activeStory]);
+
+
   const users = stories.map((user) => {
     return {
       id: user.id,
@@ -50,12 +55,14 @@ export default function Page() {
   console.log("Users: ", users);
 
   return (
-    <div>
+    <div className="container mx-auto">
       <Routes>
         <Route path="/*" element={ <HomeItem users={users} changeActive={changeActive}/> } />
-        <Route path={"/story/" + activeStory ? activeStory.id : ""} element={<StoryItem story={activeStory} />} />
+        <Route path={"/story/" + activeStory.id} element={<StoryItem activeUser={activeStory} stories={stories} watchStory={watchStory}/>} />
       </Routes>
-      <Button onClick={() => { watchStory(1, 1); }} >Watch</Button>
+      <div>
+        <Button onClick={() => { watchStory(1, 1); }} >Watch</Button>
+      </div>
     </div>
   );
 }
