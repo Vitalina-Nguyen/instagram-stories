@@ -1,7 +1,16 @@
-.userItem {
-    @apply rounded;
+.allusers_wrapper {
+    @apply max-w-3xl mx-auto;
 }
 
+.user_wrapper {
+    @apply text-center h-10 w-10;
+
+}
+
+// .userItem {
+//     @apply text-center h-4 w-4;
+// }
+
 .userImg {
-    @apply rounded-xl;
+    @apply rounded-full overflow-hidden;
 }
