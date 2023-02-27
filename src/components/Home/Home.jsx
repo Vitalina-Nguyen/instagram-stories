@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import style from "./homeItem.module.scss";
+import style from "./home.module.scss";
 import { Space } from 'antd';
 
 
@@ -20,8 +20,10 @@ export default function HomeItem({ users, changeActive }) {
     )
   })
   return (
-    <Space className= {style.allusers_wrapper}>
-      {allUsersCircles}
-    </Space>
+    <div className={style.allusers_wrapper}>
+      <Space className= {style.allusers_wrapper}>
+        {allUsersCircles}
+      </Space>
+    </div>
   );
 }

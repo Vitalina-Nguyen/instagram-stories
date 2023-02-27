@@ -21,6 +21,23 @@
               },
               isWatched: false,
             },
+            {
+              id: 3,
+              media: {
+                type: 'video' || 'image',
+                src: 'https://sites.google.com/site/prirodanasevseegooglgfgf/_/rsrc/1463456237313/home/priroda_gory_nebo_ozero_oblaka_81150_1920x1080.jpg'
+              },
+              isWatched: false,
+            },
+            {
+              id: 4,
+              media: {
+                type: 'video' || 'image',
+                src: 'https://gamerwall.pro/uploads/posts/2022-03/1648710748_1-gamerwall-pro-p-fon-na-temu-priroda-krasivie-1.jpg'
+              },
+              isWatched: false,
+            },
+
         ]
     },
     {
@@ -32,7 +49,7 @@
             id: 3,
             media: {
               type: 'video' || 'image',
-              src: 'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/nature-quotes-landscape-1648265299.jpg?crop=0.676xw:1.00xh;0.148xw,0&resize=640:*'
+              src: 'https://cdn.pixabay.com/photo/2018/01/14/23/12/nature-3082832_960_720.jpg'
             },
             isWatched: false,
           },
@@ -40,7 +57,7 @@
             id: 4,
             media: {
               type: 'video' || 'image',
-              src: 'https://www.eea.europa.eu/themes/biodiversity/state-of-nature-in-the-eu/state-of-nature-2020-subtopic/image_print'
+              src: 'http://where.ru/upload/iblock/ad4/ad4ef7e48f611b6be29e51e9aefaecd1.jpg'
             },
             isWatched: false,
           },

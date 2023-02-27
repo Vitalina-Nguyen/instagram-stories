@@ -1,7 +1,41 @@
+
+
 .story_wrapper {
-    @apply mx-auto max-w-sm h-screen;
+    @apply mx-auto max-w-sm h-screen relative;
 }
 
 .story {
-    
+    @apply h-[calc(100%-32px)] m-4 relative;
+}
+
+.storyImg_wrapper {
+    @apply h-full ;
+}
+
+.storyImg {
+    @apply h-full object-cover rounded-md overflow-hidden;
+}
+
+.progress, .button_prev, .button_next {
+    @apply absolute;
+}
+
+.button_prev, .button_next {
+    @apply top-[50%] -translate-y-[50%] border-none hover:border-none shadow-none p-0 h-auto;
+}
+
+.storyNavLink {
+    @apply flex items-center;
+}
+
+.button_prev {
+    @apply -left-[30px]
+}
+.button_next {
+    @apply -right-[30px]
+}
+
+.button_close {
+    @apply border-none hover:border-none shadow-none p-0 h-auto absolute 
+           flex -right-[15px] top-1; 
 }
