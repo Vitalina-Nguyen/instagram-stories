@@ -1,21 +1,23 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
+import React, { useEffect } from "react";
 import style from "./home.module.scss";
 import { Space } from 'antd';
 
 
-export default function HomeItem({ users, changeActive }) {
+export default function Home({ users, setActive }) {
+
+
+
   const allUsersCircles = users.map(user => {
 
     return (
-      <div className={style.user_wrapper} key={user.id}>
-        <NavLink className={style.userItem} to={'/story/' + user.id} key={user.id} 
-          onClick = {() => { changeActive(user.id) }}>
-            <div className={style.userImg} key= {user.id}>
-              <img src={user.img} alt={user.username} key= {user.id} />
+      <div className={style.user_wrapper} key={user.userId}>
+        <button className={style.userItem} key={user.userId} 
+          onClick = {() => { setActive(user.userId) }}>
+            <div className={` ${(!users.allStoriesWatched) ? 'border-red-900 border' : 'border-0'} ${style.userImg}`} key= {user.userId}>
+              <img src={user.img} alt={user.name} key= {user.userId} />
             </div>
-            <div key={(user.id)*2}>{user.username}</div> 
-        </NavLink>
+            <div key={(user.userId)*2}>{user.name}</div> 
+        </button>
       </div>
     )
   })

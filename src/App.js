@@ -4,11 +4,9 @@ import Page from "./components/Page";
 
 function App() {
   return (
-    <BrowserRouter>
-      <div>
-        <Page/>
-      </div>
-    </BrowserRouter>
+    <div>
+      <Page />
+    </div>
   );
 }
 

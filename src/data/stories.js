@@ -1,5 +1,5 @@
 
- export const initialStories = [
+ const initialStories = [
     {
         id: 1,
         username: 'Sasha',
@@ -8,7 +8,7 @@
             {
               id: 1,
               media: {
-                type: 'video' || 'image',
+                type: 'image',
                 src: 'https://static.sadhguru.org/d/46272/1633199491-1633199490440.jpg'
               },
               isWatched: false,
@@ -63,4 +63,68 @@
           },
       ]
   }
-  ]
+]
+
+export const initUsers = [
+  {
+    userId: 1,
+    name: 'Sasha',
+    img: 'https://trikky.ru/wp-content/blogs.dir/1/files/2021/12/01/340193ff-9da8-4115-8a25-9e6fb64d578f.png',
+    storiesId: 1,
+    allStoriesWatched: false,
+  },
+  {
+    userId: 2,
+    name: 'Masha',
+    img: 'https://trikky.ru/wp-content/blogs.dir/1/files/2021/12/01/340193ff-9da8-4115-8a25-9e6fb64d578f.png',
+    storiesId: 2,
+    allStoriesWatched: false,
+
+  }
+]
+export const initStories = [
+  {
+    storiesId: 1,
+    userId: 1,
+    stories: [
+      {
+        id: 0,
+          media: {
+            type: 'video' || 'image',
+            src: 'https://static.sadhguru.org/d/46272/1633199491-1633199490440.jpg'
+          },
+          isWatched: false,
+      },
+      {
+        id: 1,
+          media: {
+            type: 'video' || 'image',
+            src: 'https://cdn.pixabay.com/photo/2018/01/14/23/12/nature-3082832_960_720.jpg'
+          },
+          isWatched: false,
+      },
+    ]
+  },
+  {
+    storiesId: 2,
+    userId: 2,
+    stories: [
+      {
+        id: 0,
+        media: {
+          type: 'video' || 'image',
+          src: 'http://where.ru/upload/iblock/ad4/ad4ef7e48f611b6be29e51e9aefaecd1.jpg'
+        },
+        isWatched: false,
+      },
+      {
+        id: 1,
+        media: {
+          type: 'video' || 'image',
+          src: 'https://sites.google.com/site/prirodanasevseegooglgfgf/_/rsrc/1463456237313/home/priroda_gory_nebo_ozero_oblaka_81150_1920x1080.jpg'
+        },
+        isWatched: false,
+      },
+    ]
+  }
+]

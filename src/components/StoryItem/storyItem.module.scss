@@ -1,5 +1,6 @@
-
-
+.story_container {
+    @apply w-full absolute bg-zinc-900/50;
+}
 .story_wrapper {
     @apply mx-auto max-w-sm h-screen relative;
 }
@@ -9,14 +10,30 @@
 }
 
 .storyImg_wrapper {
-    @apply h-full ;
+    @apply h-full relative ;
 }
 
 .storyImg {
     @apply h-full object-cover rounded-md overflow-hidden;
 }
 
-.progress, .button_prev, .button_next {
+.allprogress{ 
+    @apply absolute flex justify-center top-0 w-full px-4;
+}
+
+.allprogress>div {
+    @apply mr-[2px] last:mr-0 last:ml-[2px];
+}
+
+.allprogress>div>div>div {
+    @apply h-2;
+}
+
+.allprogress>div>div div {
+    @apply ease-in;
+}
+
+.button_prev, .button_next {
     @apply absolute;
 }
 

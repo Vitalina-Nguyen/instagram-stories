@@ -1,5 +1,5 @@
 .allusers_wrapper {
-    @apply px-4 my-6 container mx-auto;
+    @apply px-4 my-6 container mx-auto absolute;
 }
 
 .user_wrapper {
@@ -13,4 +13,8 @@
 
 .userImg {
     @apply rounded-full overflow-hidden;
+}
+
+.userImgOutline {
+    @apply border-red-900 border-0;
 }
