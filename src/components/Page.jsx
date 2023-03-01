@@ -25,22 +25,29 @@ export default function Page() {
     setActiveUserId(null);
   };
 
+  //Записать, что все истории пользователя просмотрены allStoriesWatched: true
+  const setAllStoriesWatched = () => {
+    const newDataUsers = users.map( (user) => {
+      if (user.userId === activeUserId) {
+        return ({
+          ...user,
+          allStoriesWatched: true,
+        })} else return { ...user}
+    })
+    setUsers(newDataUsers);
+  }
+
   //Кнопка вперёд
   const showNext = () => {
     if (currentStory.id < currentStories.length - 1) {
       setActiveStoryId(activeStoryId + 1);
     } else if (activeUserId < users.length) {
-      const newDataUsers = users.map( (user) => {
-        if (user.userId === activeUserId) {
-          return ({
-          ...user,
-          allStoriesWatched: true,
-        })} else return { ...user}
-      })
-      setUsers(newDataUsers);
+      setAllStoriesWatched();
       setActiveUserId(activeUserId + 1);
       setActiveStoryId(0);
-    } else clearActiveUser();
+    } else
+      clearActiveUser();
+      setAllStoriesWatched();
   }
 
 //Кнопка назад
@@ -82,7 +89,13 @@ export default function Page() {
   return (
    <div>
      <Home users={users} stories={stories} setActive={setActive}/> 
-     {activeUserId !== null && <StoryItem stories={currentStories} activeStoryId={activeStoryId} story={currentStory} setWatchedStory= {setWatchedStory} closeStory={clearActiveUser} showNext= {showNext} showPrev={showPrev} />}
+     {activeUserId !== null &&
+         <StoryItem stories={currentStories}
+                    activeStoryId={activeStoryId}
+                    story={currentStory} setWatchedStory= {setWatchedStory}
+                    closeStory={clearActiveUser}
+                    showNext= {showNext}
+                    showPrev={showPrev} />}
    </div>
   );
 }

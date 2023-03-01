@@ -1,5 +1,5 @@
 .story_container {
-    @apply w-full absolute bg-zinc-900/50;
+    @apply w-full absolute bg-zinc-900/50 z-[2];
 }
 .story_wrapper {
     @apply mx-auto max-w-sm h-screen relative;
@@ -9,11 +9,11 @@
     @apply h-[calc(100%-32px)] m-4 relative;
 }
 
-.storyImg_wrapper {
+.storyMedia_wrapper {
     @apply h-full relative ;
 }
 
-.storyImg {
+.storyMedia {
     @apply h-full object-cover rounded-md overflow-hidden;
 }
 
@@ -25,10 +25,6 @@
     @apply mr-[2px] last:mr-0 last:ml-[2px];
 }
 
-.allprogress>div>div>div {
-    @apply h-2;
-}
-
 .allprogress>div>div div {
     @apply ease-in;
 }
@@ -38,7 +34,20 @@
 }
 
 .button_prev, .button_next {
-    @apply top-[50%] -translate-y-[50%] border-none hover:border-none shadow-none p-0 h-auto;
+    @apply top-[50%] -translate-y-[50%]
+           border-none hover:border-none shadow-none
+           p-0 hover:text-white
+           w-5 h-5 rounded-full bg-gray-400
+           after:w-[8px]  after:h-[8px] after:content-['']
+           after:border-amber-50 after:rotate-45
+           after:absolute after:top-[50%] after:-translate-y-[50%];
+}
+
+.button_next {
+    @apply right-0 after:border-t-2 after:border-r-2 after:left-[5px];
+}
+.button_prev {
+    @apply left-0 after:border-b-2 after:border-l-2 after:right-[5px];
 }
 
 .storyNavLink {
@@ -54,5 +63,5 @@
 
 .button_close {
     @apply border-none hover:border-none shadow-none p-0 h-auto absolute 
-           flex -right-[15px] top-1; 
+           flex -right-[15px] top-1 text-white;
 }

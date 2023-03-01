@@ -1,20 +1,15 @@
 .allusers_wrapper {
-    @apply px-4 my-6 container mx-auto absolute;
+    @apply px-4 my-6 mx-auto max-w-[730px] mx-auto absolute left-[50%] -translate-x-[50%];
 }
 
 .user_wrapper {
-    @apply text-center h-10 w-10 ;
-
+    @apply text-center ;
 }
-
-// .userItem {
-//     @apply text-center h-4 w-4;
-// }
 
 .userImg {
-    @apply rounded-full overflow-hidden;
+    @apply rounded-full h-[66px] w-[66px] overflow-hidden;
 }
 
-.userImgOutline {
-    @apply border-red-900 border-0;
+.swiper-button-next {
+    @apply w-5 h-5 bg-amber-600;
 }

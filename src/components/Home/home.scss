@@ -1,0 +1,19 @@
+.swiper-button-next, .swiper-button-prev {
+    @apply w-5 h-5 rounded-full bg-gray-400
+           after:w-[8px]  after:h-[8px] after:content-['']
+           after:border-amber-50 after:rotate-45
+           after:absolute
+    ;
+}
+
+.swiper-button-next {
+    @apply right-0 after:border-t-2 after:border-r-2 after:left-[5px];
+}
+
+.swiper-button-prev {
+    @apply left-0 after:border-b-2 after:border-l-2 after:right-[5px];
+}
+
+.swiper-button-disabled {
+    @apply hidden;
+}
