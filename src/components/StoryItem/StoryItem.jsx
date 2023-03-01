@@ -1,9 +1,17 @@
 import React, { useEffect, useState } from "react";
 import style from "./storyItem.module.scss";
-import { Button, Progress } from "antd";
-import { LeftCircleOutlined, RightCircleOutlined, CloseOutlined } from '@ant-design/icons';
+import {Button, Progress} from "antd";
+import { CloseOutlined} from '@ant-design/icons';
 
-export default function StoryItem( { stories, activeStoryId, story, setWatchedStory, closeStory, showNext, showPrev } ) {
+
+export default function StoryItem( { stories,
+                                     activeStoryId,
+                                     story,
+                                     setWatchedStory,
+                                     closeStory, showNext,
+                                     showPrev,
+                                     swipeUserStory } ) {
+
 
   const [progress, setProgress] = useState(0);
   const [time, setTime] = useState(0);
@@ -13,9 +21,6 @@ export default function StoryItem( { stories, activeStoryId, story, setWatchedSt
     const min = parseInt(videoDuration / 60, 10);
     const sec = Math.trunc(videoDuration % 60);
     ( min >= 3) ? setStoryDuration(60000) : setStoryDuration((min * 60 + sec) * 1000);
-    // console.log( min )
-    // console.log( sec )
-    // console.log(storyDuration)
 
   }
 
@@ -60,9 +65,31 @@ export default function StoryItem( { stories, activeStoryId, story, setWatchedSt
                       />
   })
 
+  let startingX, movingX;
+  const onTouchStart = (e) => {
+    startingX = e.touches[0].clientX;
+  }
+  const onTouchMove = (e) => {
+    movingX = e.touches[0].clientX;
+  }
+  const onTouchEnd = () => {
+    console.log("startingX: ", startingX)
+    console.log("movingX: ", movingX)
+
+    if(startingX + 100 < movingX) {
+
+      swipeUserStory( "prev")
+    } else if(startingX-100 > movingX) {
+      swipeUserStory( "next")
+    }
+  }
+
  
   return (
-    <div className={style.story_container}>
+    <div className={style.story_container}
+         onTouchStart={ (e) => { onTouchStart(e) }}
+         onTouchMove={ (e) => { onTouchMove(e) }}
+         onTouchEnd={onTouchEnd}>
       <div className={style.story_wrapper}>
         <div className={style.story}>
           
@@ -84,7 +111,7 @@ export default function StoryItem( { stories, activeStoryId, story, setWatchedSt
           </div>
         </div>
         <button className={style.button_close} onClick={ () => { closeStory() } }><CloseOutlined /></button>
-        
+
       </div>
     </div>
   );

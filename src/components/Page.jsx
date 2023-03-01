@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Home from "./Home/Home";
 import StoryItem from "./StoryItem/StoryItem";
 import { initUsers, initStories } from "../data/stories";
-import { Button } from "antd";
+
 
 export default function Page() {
   const [users, setUsers] = useState(initUsers);
@@ -60,6 +60,14 @@ export default function Page() {
     };
   }
 
+  const swipeUserStory = ( direction ) => {
+    if (direction === "prev") {
+      (activeUserId > 1) ? setActiveUserId(activeUserId - 1) : clearActiveUser();
+    } else if (direction === "next") {
+      (activeUserId < users.length) ? setActiveUserId(activeUserId + 1) : clearActiveUser();
+    }
+  }
+
   const setWatchedStory = (photoId) => {
     const newData = stories.map((userStory) => {
       if (userStory.userId === activeUserId) {
@@ -95,7 +103,8 @@ export default function Page() {
                     story={currentStory} setWatchedStory= {setWatchedStory}
                     closeStory={clearActiveUser}
                     showNext= {showNext}
-                    showPrev={showPrev} />}
+                    showPrev={showPrev}
+                    swipeUserStory={swipeUserStory}/>}
    </div>
   );
 }

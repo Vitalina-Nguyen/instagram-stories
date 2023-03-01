@@ -40,8 +40,6 @@ export default function Home({ users, setActive }) {
 
     const usersCircled = usersData.map( user => returnUserCircle(user));
     const watchedAllUsersCircles = watchedAllUsersData.map( user => returnUserCircle(user));
-    console.log("usersCircled: ", usersCircled)
-    console.log("watchedAllUsersCircles: ", watchedAllUsersCircles)
 
   return (
     <div className={style.allusers_wrapper}>
