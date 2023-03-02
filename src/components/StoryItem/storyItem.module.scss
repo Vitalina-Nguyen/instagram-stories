@@ -25,8 +25,8 @@
     @apply mr-[2px] last:mr-0 last:ml-[2px];
 }
 
-.allprogress>div>div div {
-    @apply ease-in;
+.story .storyMedia_wrapper .allprogress>div>div>div>div {
+    @apply duration-[0.1ms] ;
 }
 
 .button_prev, .button_next {
@@ -46,6 +46,7 @@
 .button_next {
     @apply right-0 after:border-t-2 after:border-r-2 after:left-[5px];
 }
+
 .button_prev {
     @apply left-0 after:border-b-2 after:border-l-2 after:right-[5px];
 }
@@ -57,6 +58,7 @@
 .button_prev {
     @apply -left-[30px]
 }
+
 .button_next {
     @apply -right-[30px]
 }

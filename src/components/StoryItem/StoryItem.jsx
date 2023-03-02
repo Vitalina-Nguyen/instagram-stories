@@ -16,19 +16,24 @@ export default function StoryItem( { stories,
   const [progress, setProgress] = useState(0);
   const [time, setTime] = useState(0);
   const [storyDuration, setStoryDuration] = useState(5000);
+
+
   const onVideoPlay = ()  => {
     let videoDuration = document.querySelector('#video').duration;
     const min = parseInt(videoDuration / 60, 10);
     const sec = Math.trunc(videoDuration % 60);
     ( min >= 3) ? setStoryDuration(60000) : setStoryDuration((min * 60 + sec) * 1000);
-
   }
 
   const storyTimeToShow = (story.media.type === 'image') ? 5000 : storyDuration;
+
+  //Помечаем истрию просмотренной при открытии
+  useEffect( () => {
+      setWatchedStory(activeStoryId);
+  }, [])
+
   useEffect(() => {
 
-
-    setWatchedStory(activeStoryId);
     const durationInterval = setInterval(() => {
       setTime(time + 100);
       setProgress(time * 100 / storyTimeToShow);
@@ -38,7 +43,7 @@ export default function StoryItem( { stories,
       clearInterval(durationInterval);
       setTime(0);
       setProgress(0);
-      showNext()
+      showNext();
     }
 
     return () => {
@@ -65,37 +70,51 @@ export default function StoryItem( { stories,
                       />
   })
 
-  let startingX, movingX;
+  const [startingX, setStartingX] = useState(null);
+  const [movingX, setMovingX] = useState(null);
   const onTouchStart = (e) => {
-    startingX = e.touches[0].clientX;
+    setStartingX(e.touches[0].clientX);
   }
   const onTouchMove = (e) => {
-    movingX = e.touches[0].clientX;
+    setMovingX(e.touches[0].clientX);
   }
   const onTouchEnd = () => {
     console.log("startingX: ", startingX)
     console.log("movingX: ", movingX)
 
-    if(startingX + 100 < movingX) {
-
+    if(startingX < movingX) {
+      setTime(0);
+      setProgress(0)
       swipeUserStory( "prev")
-    } else if(startingX-100 > movingX) {
+    } else if(startingX > movingX) {
+      setTime(0);
+      setProgress(0)
       swipeUserStory( "next")
     }
   }
 
  
   return (
-    <div className={style.story_container}
-         onTouchStart={ (e) => { onTouchStart(e) }}
-         onTouchMove={ (e) => { onTouchMove(e) }}
-         onTouchEnd={onTouchEnd}>
+    <div className={style.story_container}>
       <div className={style.story_wrapper}>
         <div className={style.story}>
           
-          <Button className={style.button_prev} onClick={showPrev}></Button>
-          <Button className={style.button_next} onClick={showNext}></Button>
-          <div className={style.storyMedia_wrapper}>
+          <Button className={style.button_prev}
+                  onClick={ () => {
+                      showPrev();
+                      setProgress(0);
+                      setTime(0);
+                  }}></Button>
+          <Button className={style.button_next}
+                  onClick={ () => {
+                      showNext();
+                      setTime(0);
+                      setProgress(0);
+                  }}></Button>
+          <div className={style.storyMedia_wrapper}
+               onTouchStart={ (e) => { onTouchStart(e) }}
+               onTouchMove={ (e) => { onTouchMove(e) }}
+               onTouchEnd={onTouchEnd}>
             {story.media.type === "video"  &&
                 <video className={style.storyMedia} id='video' autoPlay width="100%" height="100%" onPlay={onVideoPlay} >
                   <source src={story.media.src} type="video/mp4" />

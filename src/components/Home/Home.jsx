@@ -1,6 +1,5 @@
-import React, { useEffect } from "react";
+import React from "react";
 import style from "./home.module.scss";
-import { Space } from 'antd';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper';
 import 'swiper/scss'

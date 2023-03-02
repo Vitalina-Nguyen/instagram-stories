@@ -8,18 +8,22 @@ export default function Page() {
   const [users, setUsers] = useState(initUsers);
   const [stories, setStories] = useState(initStories);
 
-  const [activeUserId, setActiveUserId] = useState(null); // Active USER ID 
+  const [activeUserId, setActiveUserId] = useState(null); // Active USER ID
   const [activeStoryId, setActiveStoryId] = useState(0); // Active STORY ID
 
   const currentStories = activeUserId !== null && stories.find((st) => activeUserId === st.userId).stories; // All current stories [ {...}, {...}]
   const currentStory = currentStories && currentStories[activeStoryId]; // Current story {...}
+
+  useEffect( () => {
+    console.log("User Id: ", activeUserId);
+    console.log("Story Id: ", activeStoryId);
+  }, [activeUserId,activeStoryId])
 
 
   const setActive = (id) => {
     setActiveUserId(id);
     setActiveStoryId(0);
   };
-
 
   const clearActiveUser = () => {
     setActiveUserId(null);
@@ -39,15 +43,20 @@ export default function Page() {
 
   //Кнопка вперёд
   const showNext = () => {
-    if (currentStory.id < currentStories.length - 1) {
+
+    if (currentStory.id < currentStories.length-1) {
+      console.log("Следующая история ")
       setActiveStoryId(activeStoryId + 1);
-    } else if (activeUserId < users.length) {
+    } else if (activeUserId < users.length ) {
+      console.log("Следующий пользователь ")
       setAllStoriesWatched();
-      setActiveUserId(activeUserId + 1);
       setActiveStoryId(0);
-    } else
+      setActiveUserId(activeUserId + 1);
+
+    } else{
       clearActiveUser();
       setAllStoriesWatched();
+    }
   }
 
 //Кнопка назад
@@ -57,13 +66,18 @@ export default function Page() {
     } else if (activeUserId > 1) {
       setActiveUserId(activeUserId - 1);
       setActiveStoryId(0);
-    };
+    } else {
+      clearActiveUser();
+      setAllStoriesWatched();
+    }
   }
 
   const swipeUserStory = ( direction ) => {
     if (direction === "prev") {
+      console.log("Prev");
       (activeUserId > 1) ? setActiveUserId(activeUserId - 1) : clearActiveUser();
     } else if (direction === "next") {
+      console.log("Next");
       (activeUserId < users.length) ? setActiveUserId(activeUserId + 1) : clearActiveUser();
     }
   }
@@ -89,10 +103,6 @@ export default function Page() {
     });
     setStories(newData);
   };
-
-  useEffect ( () => {
-    console.log("Users: ", users);
-  }, [users]) 
 
   return (
    <div>
