@@ -85,7 +85,7 @@ export default function StoryItem( { stories,
   }
 
   const onPrevNextClick = ( direction ) => {
-        const showStory = (direction === 'next') ? showNext() : showPrev();
+       (direction === 'next') ? showNext() : showPrev();
         setTime(0);
         setProgress(0);
     }
