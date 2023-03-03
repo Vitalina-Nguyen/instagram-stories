@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import style from "./home.module.scss";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper';
@@ -34,8 +34,6 @@ export default function Home({ users, setActive }) {
         (user.allStoriesWatched)
         ? watchedAllUsersData.push(user)
         : usersData.push(user); })
-
-
 
     const usersCircled = usersData.map( user => returnUserCircle(user));
     const watchedAllUsersCircles = watchedAllUsersData.map( user => returnUserCircle(user));
